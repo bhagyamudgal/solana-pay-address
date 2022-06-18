@@ -21,6 +21,13 @@ const main = async () => {
 	const receiverAccountAddress = process.argv[2];
 	const amountToSend = Number(process.argv[3]);
 
+	if (!receiverAccountAddress || !amountToSend) {
+		console.log(
+			"Please pass <RECEIVER_ACCOUNT_ADDRESS> and <AMOUNT_IN_SOL>. Cannot proceed without it."
+		);
+		return;
+	}
+
 	const connection = new web3.Connection(web3.clusterApiUrl("devnet"));
 	const payer = initializeKeypair();
 
